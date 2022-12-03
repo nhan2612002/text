@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/card.css">
+<link rel="stylesheet" href="css/button.css">
+<link rel="stylesheet" href="css/form.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="topnav">
+  <a onclick="chon(1)" class="active" href="#home">HOME</a>
+  <a onclick="chon(2)" href="#hamster">HAMSTER</a>
+  <a onclick="chon(3)" href="#chuong">CHUỒNG</a>
+  <a onclick="chon(4)" href="#thucpham" on>THỨC ĂN</a>
+</div>
+<h2 style="text-align:center" id="gioithieu">Trang chủ của chuột </h2> 
+<div id="hanghoa">
+<table style="width:100%">
+  <tr>
+    <th><div class="card">
+  <img id="hinh1" src=""  style="width:100%">
+  <h1 id="ten1"></h1>
+  <p id="gia1" class="price"></p>
+  <p id="thongtin1" ></p>
+  <p><button onclick="mua(0)">thêm vào giỏ hàng</button></p>
+</div></th>
+    <th><div class="card">
+  <img id="hinh2" src=""  style="width:100%">
+  <h1 id="ten2"></h1>
+  <p id="gia2" class="price"></p>
+  <p id="thongtin2">.</p>
+  <p><button onclick="mua(1)">thêm vào giỏ hàng</button></p>
+</div></th>
+    <th><div class="card">
+  <img id="hinh3" src=""  style="width:100%">
+  <h1 id="ten3"></h1>
+  <p id="gia3" class="price"></p>
+  <p id="thongtin3"></p>
+  <p><button onclick="mua(2)">thêm vào giỏ hàng</button></p>
+</div></th>
+  </tr>
+  <tr>
+    <th colspan="3"><button onclick="next(-3)" class="button">Trước</button>
+<button onclick="next(3)" class="button">Sau</button></th> 
+  </tr>
+</table>
+<div class="card">
+  <div id="giohang">
+<h2>Giỏ hàng</h2>
+<select id="luachon">
+   <option value="0">Các đơn đã chọn:</option>
+</select>
+<h3 id="tongtien"></h3>
+<p><button onclick="remove()">Hủy</button></p>
+ <p><button onclick="chonmua()">mua đơn hàng</button></p>
+</div>
+</div>
+</div>
+<div id= "khaibao" class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+        <div class="row">
+          <div class="col-50">
+            <h3>Địa chỉ đặt đơn</h3>
+            <label for="fname"><i class="fa fa-user"></i> Họ tên</label>
+            <input type="text" id="fname" name="firstname" placeholder="Nguyễn Văn A">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="nguyenvana@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Địa chỉ</label>
+            <input type="text" id="adr" name="address" placeholder="số .. đường ..  ">
+            <label for="city"><i class="fa fa-institution"></i> Thành phố</label>
+            <input type="text" id="city" name="city" placeholder="Hồ Chí Minh">
+            <div class="row">
+              <div class="col-50">
+                <label for="state">Tỉnh thành</label>
+                <input type="text" id="state" name="state" placeholder="TP.HCM">
+              </div>
+              <div class="col-50">
+                <label for="zip">Mã Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="008428">
+              </div>
+            </div>
+          </div>
+          <div class="col-50">
+            <h3>Thanh toán</h3>
+            <label for="fname">Chấp nhận thẻ</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+            </div>
+            <label for="cname">Tên thẻ</label>
+            <input type="text" id="cname" name="cardname" placeholder="Nguyễn Văn A">
+            <label for="ccnum">Số thẻ</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Tháng hết hạn</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="Tháng 12">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Năm hết hạn</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2022">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="123">
+              </div>
+            </div>
+          </div>
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Địa chỉ giao hàng như địa chỉ đặt đơn
+        </label>
+        <input type="submit" value="Tiếp tục thanh toán" class="btn">
+      </form>
+         <button onclick="an()" class="btn">Đóng</button>
+    </div>
+  </div>
+</div>
+<script>
+  var phanmorong=".jpg",phandau="hinh/home/h";
+  function chon(n) {
+     if(n==1){Index=1;ten=ten1;
+      phanmorong=".jpg";phandau="hinh/home/h";gia(0);gia(1);gia(2);
+    }
+    if(n==2){Index=1;ten=ten2;
+      phanmorong=".jpg";phandau="hinh/hams/h";gia(0);gia(1);gia(2);
+    }
+     if(n==3){Index=1;ten=ten3;
+      phanmorong=".jpg";phandau="hinh/chuong/h";gia(0);gia(1);gia(2);
+    }
+     if(n==4){Index=1;ten=ten4;
+      phanmorong=".jpg";phandau="hinh/food/h";gia(0);gia(1);gia(2);
+    }
+  }
+  function remove() {
+    var phandau="",phanmorong="";
+  tong=0;document.getElementById('tongtien').innerHTML="Tồng số tiền=" + tong ;
+  document.getElementById("luachon").options.length = 1;
+              }
+  document.getElementById("luachon").style.fontSize="24px";
+  var y = document.getElementById("luachon"); 
+  var x = document.getElementById("giohang");
+  document.getElementById("khaibao").style.display="none";
+   x.style.display = "none";
+   function them(n) {
+        var option = document.createElement("option");
+        option.text =ten[n]+" , " + b[n]+" trăm nghìn đồng";
+        y.add(option);
+        tong=tong+b[n]; document.getElementById('tongtien').innerHTML="Tồng số tiền="+tong+" trăm nghìn đồng";
+        tenchon.push(ten[n]);giachon=push(b[n]);
+   }
+   function mua(n){
+     x.style.display = "block";
+     them(Index+n);
+   }
+function chonmua(){
+     document.getElementById("khaibao").style.display="block";
+     document.getElementById("hanghoa").style.display="none"; 
+   }   
+function an(){
+     document.getElementById("khaibao").style.display="none";
+     document.getElementById("hanghoa").style.display="block"; 
+   }   
+function gia(n) {
+document.getElementById('hinh'+(n+1)).src =phandau + (Index+n) + phanmorong ;
+document.getElementById('gia'+(n+1)).innerHTML=b[Index+n]+" trăm nghìn đồng";
+document.getElementById('ten'+(n+1)).innerHTML=ten[Index+n];
+document.getElementById('thongtin'+(n+1)).innerHTML=thongtin[Index+n];
+  }
+var Index = 1,tong=0;
+const b = [1,2,3,4,5,6,7];var ten=[];
+let ten1=["home ","Xích đu gỗ ","Vòng xoay gỗ ","Bậc thang gỗ"," Lồng nhựa "," Vòng xoay "," Cầu tuột phô mai "]; ten=ten1; 
+let ten2=["hams "," Gray "," Bears "," Woods ", " Phodopus campbelli ", " Syrian ", " Beige "];
+let ten3=["chuong "," Lồng nhỏ "," Lồng hai tầng vừa "," Lồng phô mai ", " Lồng nhỏ ", " Hai tầng lồng nhựa ", " Hai tầng lồng kính "];
+let ten4=["thucpham "," Kẹo "," Hạt "," Hạt ", " Viên các loại, ", " Tuýp snack ", " Hạt rau "];
+let thongtin=[" home ", " ", " ", " " ];
+gia(0);gia(1);gia(2);
+function next(n) {
+  Index= Index+n ;
+  if(Index<0 || Index>5)  Index=1;
+  gia(0);gia(1);gia(2);  
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+
+ * {
+	 box-sizing: border-box;
+	 font-weight: normal;
+}
+ body {
+	 font-family: 'Damion', cursive;
+	 background-image: linear-gradient(0, #f73a27, #fe5430);
+	 height: 100vh;
+	 overflow: hidden;
+}
+ 
+ body .picture_inner .stage1 {
+	 display: block;
+}
+ body .picture_inner__stage {
+	 width: 300px;
+	 position: absolute;
+	 left: 0;
+	 right: 0;
+	 margin: auto;
+	 text-align: center;
+	 top: 50%;
+	 display: none;
+	 transform: translateY(-38%);
+}
+ body .picture_inner__stage .oven img {
+	 width: 290px;
+	 position: relative;
+	 left: -10px;
+}
+ body .picture_inner__stage .tin img {
+	 width: 90px;
+}
+ body .picture_inner__stage .candle img {
+	 width: 10px;
+}
+.gallery{
+	margin-left: auto;
+	margin-bottom: 100px;
+	text-align: initial;
+	position:relative;
+	width:168px;
+	height:231px;
+	transform-style:preserve-3d;
+	animation:rotate 35s linear infinite;
+  }
+  
+  @keyframes rotate{
+	from{
+	  transform:perspective(1200px) rotateY(0deg);
+	}
+	
+	to{
+	  transform:perspective(1200px) rotateY(360deg);
+	}
+  }
+
+  .gallery span{
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i) * 433deg)) translateZ(237px);
+  }
+  
+  .gallery span img{
+	position:absolute;
+	width:100%;
+	height:100%;
+	object-fit:cover;
+  }
